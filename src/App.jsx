@@ -165,13 +165,19 @@ Return ONLY a valid JSON array with exactly 3 objects. No extra text, no markdow
       });
 
       const data = await response.json();
+console.log("API Response:", JSON.stringify(data));
+      if (data.error) {
+        throw new Error(data.error.message);
+      }
       const text = data.content?.map(i => i.text || "").join("") || "";
       const clean = text.replace(/```json|```/g, "").trim();
       const parsed = JSON.parse(clean);
       setAds(parsed);
       setGenerated(true);
     } catch (err) {
-      setError("Something went wrong generating the ads. Please try again.");
+      console.error("Full error:", err);
+      console.error("Response data:", err.message);
+      setError(`Error: ${err.message}`);
     }
     setLoading(false);
   };
