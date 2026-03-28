@@ -153,7 +153,7 @@ Return ONLY a valid JSON array with exactly 3 objects. No extra text, no markdow
         method: "POST",
         headers: { 
   "Content-Type": "application/json",
-  ""x-api-key": import.meta.env.VITE_API_KEY,",
+  "x-api-key": import.meta.env.VITE_API_KEY,
   "anthropic-version": "2023-06-01",
   "anthropic-dangerous-direct-browser-access": "true"
 },
